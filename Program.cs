@@ -45,6 +45,12 @@ class Result
 
         return maxLength;
     }
+    public static int veryShortVersion(List<int> a)
+    {
+        return a.GroupBy(x => x)
+            .Select(g => g.Count() + a.Count(x => x == g.Key + 1))
+            .Max();
+    }
 }
 
 class Solution
@@ -58,5 +64,10 @@ class Solution
         int result = Result.pickingNumbers(a);
 
         Console.WriteLine(result);
+       
+        int result1 = Result.veryShortVersion(a);
+        
+        Console.WriteLine(result1);
+        
     }
 }
